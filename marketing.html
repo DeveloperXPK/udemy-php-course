@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: La Guía Definitiva del Marketing de Nichos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- NARRATIVE PLAN: The infographic tells a story starting with the broad concept of market segmentation, then narrows down to define a niche, explains how to identify and choose a profitable one, details the core strategies of differentiation and positioning, and finally, covers advanced tactics and common pitfalls. This follows the logical flow of the source material. -->
+    <!-- VISUALIZATION CHOICES:
+    1. Market Division Hierarchy: Goal -> Organize. Chosen Viz -> Flow Chart. Justification -> Clearly shows the funnel-down process from a broad market to a specific customer. Method -> Structured HTML/CSS with Tailwind. NO SVG.
+    2. Segmentation Criteria: Goal -> Inform. Chosen Viz -> Icon-based Cards. Justification -> Visually engaging way to present distinct categories. Method -> Unicode characters styled with Tailwind. NO SVG.
+    3. Anatomy of a Niche: Goal -> Compare/Inform. Chosen Viz -> Donut Chart. Justification -> Shows how multiple key characteristics form the concept of a "perfect niche". Method -> Chart.js (Canvas).
+    4. Advantages of Segmenting: Goal -> Compare. Chosen Viz -> Bar Chart. Justification -> Effectively compares the positive business impacts derived from segmentation. Method -> Chart.js (Canvas).
+    5. Pillars of Differentiation: Goal -> Compare. Chosen Viz -> Radar Chart. Justification -> Ideal for showing how a company should balance its efforts across multiple strategic dimensions. Method -> Chart.js (Canvas).
+    6. Niche Selection Process: Goal -> Organize. Chosen Viz -> Numbered List/Process Diagram. Justification -> Provides a clear, step-by-step guide for decision-making. Method -> Styled HTML list with Tailwind. NO SVG.
+    -->
+    <!-- COLOR PALETTE: Energetic & Playful - #FF6B6B (accent red), #4ECDC4 (primary teal), #45B7D1 (secondary blue), #F7FFF7 (background off-white), #1A535C (dark text). -->
+    <!-- CONFIRMATION: NO Mermaid JS and NO SVG were used anywhere in this output. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7FFF7;
+            color: #1A535C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-arrow {
+            font-size: 2.5rem;
+            line-height: 1;
+            color: #45B7D1;
+            transform: translateY(20px);
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4ECDC4;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#1A535C] mb-2">La Guía del Marketing de Nichos</h1>
+            <p class="text-lg md:text-xl text-[#4ECDC4] max-w-3xl mx-auto">Descubre cómo encontrar y dominar mercados específicos para impulsar tu negocio.</p>
+        </header>
+
+        <main>
+            <section id="fundamentals" class="mb-16">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-center mb-6">Del Mercado Masivo al Cliente Ideal</h2>
+                    <p class="text-center max-w-4xl mx-auto mb-8">El éxito no está en vender a todo el mundo, sino en ser indispensable para un grupo selecto. El marketing de nichos comienza con la segmentación: el arte de dividir un mercado gigante en grupos más pequeños y manejables para entenderlos y servirlos mejor.</p>
+                    <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-center">
+                        <div class="p-4 rounded-lg bg-gray-100 w-full md:w-auto">
+                            <div class="text-2xl font-bold">Mercado General</div>
+                            <div class="text-sm text-gray-500">Todos los posibles clientes</div>
+                        </div>
+                        <div class="flow-arrow">	&rarr;</div>
+                        <div class="p-4 rounded-lg bg-teal-100 w-full md:w-auto">
+                            <div class="text-2xl font-bold">Segmento</div>
+                            <div class="text-sm text-gray-500">Grupos con necesidades comunes</div>
+                        </div>
+                        <div class="flow-arrow">	&rarr;</div>
+                        <div class="p-4 rounded-lg bg-[#4ECDC4] text-white w-full md:w-auto shadow-md">
+                            <div class="text-2xl font-bold">Nicho</div>
+                            <div class="text-sm text-teal-100">Grupos pequeños con necesidades únicas y desatendidas</div>
+                        </div>
+                         <div class="flow-arrow">	&rarr;</div>
+                        <div class="p-4 rounded-lg bg-[#1A535C] text-white w-full md:w-auto shadow-md">
+                            <div class="text-2xl font-bold">Cliente Ideal</div>
+                            <div class="text-sm text-gray-300">Personalización máxima</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="criteria" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">¿Cómo Segmentar tu Mercado?</h2>
+                 <p class="text-center max-w-4xl mx-auto mb-8">Para encontrar tu nicho, primero debes entender las diferentes formas en que se puede dividir a la audiencia. Utiliza estos cuatro criterios clave para identificar grupos con características homogéneas.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                        <div class="text-5xl mb-4">🗺️</div>
+                        <h3 class="text-xl font-bold mb-2">Geográfica</h3>
+                        <p class="text-gray-600">Divide por ubicación: país, región, ciudad o incluso clima.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                        <div class="text-5xl mb-4">👥</div>
+                        <h3 class="text-xl font-bold mb-2">Demográfica</h3>
+                        <p class="text-gray-600">Agrupa por edad, género, ingresos, nivel educativo u ocupación.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                        <div class="text-5xl mb-4">🧠</div>
+                        <h3 class="text-xl font-bold mb-2">Psicográfica</h3>
+                        <p class="text-gray-600">Clasifica por estilo de vida, personalidad, valores y actitudes.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+                        <div class="text-5xl mb-4">🛒</div>
+                        <h3 class="text-xl font-bold mb-2">Conductual</h3>
+                        <p class="text-gray-600">Segmenta por comportamiento de compra, lealtad a la marca o frecuencia de uso.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="anatomy" class="mb-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h2 class="text-3xl font-bold text-center mb-6">La Anatomía de un Nicho Rentable</h2>
+                         <p class="text-center max-w-xl mx-auto mb-4">Un nicho ideal no es solo un grupo pequeño; es una oportunidad de negocio bien definida. Estas son las características que debes buscar para asegurar que tu nicho tiene el potencial de ser rentable y sostenible.</p>
+                        <div class="chart-container">
+                            <canvas id="nicheCharacteristicsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h2 class="text-3xl font-bold text-center mb-6">Ventajas Clave de la Segmentación</h2>
+                        <p class="text-center max-w-xl mx-auto mb-4">Enfocar tus esfuerzos en un nicho específico no es una limitación, es una estrategia poderosa. Al concentrar tus recursos, puedes lograr resultados significativamente mejores en áreas cruciales para el negocio.</p>
+                        <div class="chart-container">
+                            <canvas id="advantagesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section id="gemini-generator" class="mb-16">
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-center mb-2">✨ Generador de Ideas de Nicho</h2>
+                    <p class="text-center max-w-4xl mx-auto mb-8">¿Atascado en la lluvia de ideas? Introduce un mercado o interés general y deja que la IA te sugiera nichos específicos y creativos para explorar.</p>
+                    <div class="max-w-xl mx-auto">
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input type="text" id="niche-input" placeholder="Ej: café, fitness, mascotas..." class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4ECDC4] focus:outline-none">
+                            <button id="generate-niche-btn" class="bg-[#FF6B6B] text-white font-bold py-3 px-6 rounded-lg hover:bg-red-500 transition-colors duration-300">Generar Ideas</button>
+                        </div>
+                    </div>
+                    <div id="niche-results" class="mt-8">
+                    </div>
+                </div>
+            </section>
+
+            <section id="strategy" class="mb-16">
+                 <h2 class="text-3xl font-bold text-center mb-8">El Plan Maestro: Cómo Elegir y Dominar tu Nicho</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-center mb-6">Proceso de Selección del Nicho</h3>
+                        <p class="text-center mb-6">Elegir el nicho correcto es un proceso analítico y creativo. Sigue estos pasos para evaluar las oportunidades y tomar una decisión informada que alinee el potencial del mercado con las fortalezas de tu empresa.</p>
+                        <ol class="list-decimal list-inside space-y-4 text-lg">
+                            <li><span class="font-bold">Investiga:</span> Usa datos para identificar mercados desatendidos con alta demanda.</li>
+                            <li><span class="font-bold">Evalúa el Potencial:</span> Asegúrate de que el nicho sea lo suficientemente grande para ser rentable y tenga potencial de crecimiento.</li>
+                            <li><span class="font-bold">Analiza la Competencia:</span> Busca nichos donde puedas ofrecer algo único y superior a la competencia existente.</li>
+                            <li><span class="font-bold">Valida tus Recursos:</span> Confirma que tu empresa tiene la <span class="text-[#FF6B6B]">Actitud</span>, <span class="text-[#FF6B6B]">Aptitud</span> y <span class="text-[#FF6B6B]">Creatividad</span> para servir al nicho con éxito.</li>
+                        </ol>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                        <h3 class="text-2xl font-bold text-center mb-6">Los Pilares de la Diferenciación</h3>
+                        <p class="text-center mb-6">Una vez elegido tu nicho, debes diferenciarte. No se trata solo de tener un buen producto, sino de construir una oferta única en múltiples dimensiones para convertirte en la opción preferida.</p>
+                        <div class="chart-container">
+                            <canvas id="differentiationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pitfalls" class="mb-16">
+                 <h2 class="text-3xl font-bold text-center mb-8">Tácticas Avanzadas y Errores a Evitar</h2>
+                <div class="bg-[#1A535C] text-white rounded-lg shadow-lg p-6 md:p-8">
+                     <p class="text-center text-lg max-w-4xl mx-auto mb-8">Dominar un nicho requiere más que una buena estrategia; exige una ejecución impecable y la conciencia de los posibles peligros. Implementa estas tácticas y mantente alerta a las señales de una segmentación deficiente.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4 text-[#4ECDC4]">Herramientas Estratégicas</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><span class="font-bold">Marketing Sensorial:</span> Crea una experiencia de marca memorable apelando a los 5 sentidos.</li>
+                                <li><span class="font-bold">Comunicación Efectiva:</span> Utiliza publicidad, promociones y relaciones públicas dirigidas específicamente a tu nicho.</li>
+                                <li><span class="font-bold">Logística Impecable:</span> Asegura que tu producto llegue en el tiempo y forma correctos, superando expectativas.</li>
+                                <li><span class="font-bold">Posicionamiento Fuerte:</span> Ocupa un lugar claro y deseable en la mente de tus consumidores.</li>
+                            </ul>
+                        </div>
+                        <div>
+                             <h3 class="text-2xl font-bold mb-4 text-[#FF6B6B]">⚠️ Desventajas de una Mala Segmentación</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Pérdida de utilidades y recursos.</li>
+                                <li>Desconexión con clientes potenciales.</li>
+                                <li>Pérdida de oportunidades de mercado valiosas.</li>
+                                <li>Uso de estrategias de marketing ineficaces.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="text-gray-600">&copy; 2025 Infografía de Marketing de Nichos. Creada para visualizar conceptos clave.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const primaryColor = '#4ECDC4';
+            const accentColor = '#FF6B6B';
+            const secondaryColor = '#45B7D1';
+            const darkColor = '#1A535C';
+            const lightColor = '#F7FFF7';
+
+            function wrapLabel(label, maxLength = 16) {
+                if (label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine += ' ' + word;
+                    }
+                }
+                lines.push(currentLine.trim());
+                return lines;
+            }
+
+            const tooltipTitleCallback = function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const sharedChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: { top: 12, bottom: 20, left: 8, right: 8 } // separado entre gráfico y legend
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        align: 'center',
+                        labels: {
+                            color: darkColor,
+                            font: {
+                                size: 9
+                            },
+                            boxWidth: 12,      // reduce ancho del recuadro de color
+                            boxHeight: 12,
+                            padding: 12,       // espacio entre items de la leyenda
+                            usePointStyle: true // usa punto en vez del recuadro (más compacto/limpio)
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            };
+            var ctxNiche = document.getElementById('nicheCharacteristicsChart').getContext('2d');
+            new Chart(ctxNiche, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Grupo Pequeño y Definido',
+                        'Necesidades Específicas',
+                        'Capacidad Económica',
+                        'Requiere Especialización',
+                        'Potencialmente Rentable'
+                    ].map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Características del Nicho',
+                        data: [20, 20, 20, 20, 20],
+                        backgroundColor: [primaryColor, secondaryColor, accentColor, '#F9A825', darkColor],
+                        borderColor: lightColor,
+                        borderWidth: 4,
+                        hoverOffset: 10
+                    }]
+                },
+                options: { ...sharedChartOptions }
+            });
+
+            var ctxAdvantages = document.getElementById('advantagesChart').getContext('2d');
+            new Chart(ctxAdvantages, {
+                type: 'bar',
+                data: {
+                    labels: ['Optimizar Recursos', 'Mejorar Servicio', 'Mejorar Comunicación', 'Incrementar Ventas'],
+                    datasets: [{
+                        label: 'Impacto Positivo (%)',
+                        data: [85, 90, 75, 95],
+                        backgroundColor: primaryColor,
+                        borderColor: darkColor,
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    ...sharedChartOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#e0e0e0'
+                            },
+                            ticks: {
+                                color: darkColor
+                            }
+                        },
+                        x: {
+                             grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: darkColor
+                            }
+                        }
+                    },
+                    plugins: {
+                       ...sharedChartOptions.plugins,
+                       legend: {
+                           display: false
+                       }
+                   }
+                }
+            });
+
+            var ctxDifferentiation = document.getElementById('differentiationChart').getContext('2d');
+            new Chart(ctxDifferentiation, {
+                type: 'radar',
+                data: {
+                    labels: ['Producto', 'Servicios', 'Personal', 'Canal de Distribución', 'Imagen de Marca'].map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Nivel de Diferenciación',
+                        data: [9, 7, 8, 6, 9],
+                        backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                        borderColor: accentColor,
+                        pointBackgroundColor: accentColor,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: accentColor
+                    }]
+                },
+                options: {
+                    ...sharedChartOptions,
+                     scales: {
+                        r: {
+                            angleLines: {
+                                color: '#e0e0e0'
+                            },
+                            grid: {
+                                color: '#e0e0e0'
+                            },
+                            pointLabels: {
+                                color: darkColor,
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                color: darkColor
+                            }
+                        }
+                    },
+                    plugins: {
+                       ...sharedChartOptions.plugins,
+                       legend: {
+                           display: false
+                       }
+                   }
+                }
+            });
+
+            const generateBtn = document.getElementById('generate-niche-btn');
+            const nicheInput = document.getElementById('niche-input');
+            const resultsContainer = document.getElementById('niche-results');
+
+            generateBtn.addEventListener('click', async () => {
+                const userInput = nicheInput.value.trim();
+                if (!userInput) {
+                    resultsContainer.innerHTML = '<p class="text-center text-red-500">Por favor, introduce un mercado para generar ideas.</p>';
+                    return;
+                }
+
+                resultsContainer.innerHTML = '<div class="loader"></div>';
+
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const systemPrompt = "Actúa como un experto estratega de marketing de nichos. Tu tarea es generar ideas de nichos de mercado creativas y viables. Para el mercado general que te proporcionen, genera 3 ideas de nicho. Para cada idea, formatea tu respuesta exactamente así, sin texto introductorio ni de cierre: ### [Nombre del Nicho] \\n **Público Objetivo:** [Descripción del público] \\n **Ejemplo de Producto/Servicio:** [Descripción del producto o servicio]";
+                const userQuery = `Genera ideas de nicho para el mercado de: ${userInput}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Error de la API: ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                    if (text) {
+                        displayNicheIdeas(text);
+                    } else {
+                        resultsContainer.innerHTML = '<p class="text-center text-red-500">No se pudieron generar ideas. Inténtalo de nuevo.</p>';
+                    }
+                } catch (error) {
+                    console.error("Error fetching niche ideas:", error);
+                    resultsContainer.innerHTML = `<p class="text-center text-red-500">Ocurrió un error al contactar al servicio de IA. Revisa la consola para más detalles.</p>`;
+                }
+            });
+            
+            function displayNicheIdeas(text) {
+                resultsContainer.innerHTML = '';
+                const ideas = text.split('### ').filter(p => p.trim() !== '');
+                
+                if (ideas.length === 0) {
+                    resultsContainer.innerHTML = '<p class="text-center text-gray-600">La IA no pudo generar ideas para este mercado. ¡Intenta con otro!</p>';
+                    return;
+                }
+
+                const grid = document.createElement('div');
+                grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+
+                ideas.forEach(ideaText => {
+                    const lines = ideaText.split('\n').filter(l => l.trim() !== '');
+                    const title = lines[0] || 'Idea sin título';
+                    const target = lines[1]?.replace('**Público Objetivo:**', '').trim() || 'No especificado';
+                    const product = lines[2]?.replace('**Ejemplo de Producto/Servicio:**', '').trim() || 'No especificado';
+
+                    const card = document.createElement('div');
+                    card.className = 'bg-gray-50 rounded-lg p-6 border border-gray-200';
+                    card.innerHTML = `
+                        <h4 class="text-xl font-bold text-[#1A535C] mb-3">${title}</h4>
+                        <p class="mb-2"><strong class="font-semibold text-[#4ECDC4]">Público Objetivo:</strong> ${target}</p>
+                        <p><strong class="font-semibold text-[#4ECDC4]">Ejemplo de Producto/Servicio:</strong> ${product}</p>
+                    `;
+                    grid.appendChild(card);
+                });
+                resultsContainer.appendChild(grid);
+            }
+        });
+    </script>
+
+</body>
+</html>
+
